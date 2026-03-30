@@ -16,10 +16,11 @@ export async function getUserPreferences(uid) {
 
 // Save onboarding preferences
 export async function saveUserPreferences(uid, preferences) {
-  await updateDoc(doc(db, 'users', uid), {
+  await setDoc(doc(db, 'users', uid), {
     preferences,
     onboardingDone: true,
-  });
+    lastIngredients: []
+  }, { merge: true });
 }
 
 // Check onboarding status
