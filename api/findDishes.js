@@ -74,7 +74,7 @@ export default async function handler(req, res) {
 
   // 5. Call Gemini API
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash-8b' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
 
     const systemInstruction = 'You are a chef assistant. Suggest dishes the user can make based on their available ingredients, cuisine preferences, diet type, and location. Only include dishes where match_percentage is 65 or above. Return ONLY valid JSON — no markdown, no code blocks, no extra text, no explanation.';
 

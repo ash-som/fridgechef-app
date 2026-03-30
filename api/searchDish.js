@@ -60,7 +60,7 @@ export default async function handler(req, res) {
 
   // 4. Call Gemini API
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash-8b' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
 
     const systemInstruction = 'You are a chef assistant. Return the complete recipe for the dish requested. Return ONLY valid JSON — no markdown, no code blocks, no extra text.';
 
