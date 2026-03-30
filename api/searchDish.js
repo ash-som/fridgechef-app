@@ -2,12 +2,14 @@ import admin from 'firebase-admin';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Initialize Firebase Admin (singleton)
+const privateKey = process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n');
+
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
       projectId: process.env.FIREBASE_PROJECT_ID,
       clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+      privateKey,
     }),
   });
 }
@@ -58,7 +60,7 @@ export default async function handler(req, res) {
 
   // 4. Call Gemini API
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
     const systemInstruction = 'You are a chef assistant. Return the complete recipe for the dish requested. Return ONLY valid JSON — no markdown, no code blocks, no extra text.';
 

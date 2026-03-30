@@ -13,6 +13,7 @@ export default function OnboardingScreen() {
   const [saving, setSaving] = useState(false);
 
   const handleGetStarted = async () => {
+    console.log('Get Started clicked');
     setSaving(true);
     try {
       await saveUserPreferences(user.uid, {
@@ -20,6 +21,8 @@ export default function OnboardingScreen() {
         diet,
         defaultServings: 2,
       });
+      console.log('Preferences saved');
+      console.log('Navigating to home');
       navigate('/', { replace: true });
     } catch (err) {
       console.error('Error saving preferences:', err);
@@ -29,6 +32,7 @@ export default function OnboardingScreen() {
   };
 
   const handleSkip = () => {
+    console.log('Skip clicked, navigating to home');
     navigate('/', { replace: true });
   };
 
